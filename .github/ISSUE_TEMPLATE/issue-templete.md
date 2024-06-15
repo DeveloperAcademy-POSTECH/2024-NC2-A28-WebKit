@@ -12,4 +12,4 @@ assignees: 00yhsp
 ## 작업 내용
 - 
 ## Todo
-- []
+- [ ]
