@@ -54,7 +54,7 @@ struct HomeView: View {
             }.padding(.horizontal, 20)
         }
         .sheet(isPresented: $homeVM.platformWebViewPresented) {
-            NavyismWebView(url: homeVM.selectedPlatform.rawValue)
+            PlatformView(url: homeVM.selectedPlatform.rawValue)
                 .presentationDetents([.height(homeVM.sheetHeight)])
         }
     }
