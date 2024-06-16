@@ -18,7 +18,7 @@ final class HomeViewModel {
         document.querySelector('#inputhere').value = '\(url)';
         document.querySelector('#buttonFight').click();
         """
-        webView.webView.evaluateJavaScript(script) { (result, error) in
+        webView.webView.evaluateJavaScript(script) { result, error in
             if let error = error {
                 print(error.localizedDescription)
             }
