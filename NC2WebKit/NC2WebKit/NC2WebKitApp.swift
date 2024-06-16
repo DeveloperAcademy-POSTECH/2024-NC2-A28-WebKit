@@ -11,7 +11,7 @@ import SwiftUI
 struct NC2WebKitApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
