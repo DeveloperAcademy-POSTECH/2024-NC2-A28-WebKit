@@ -8,14 +8,14 @@
 import SwiftUI
 import WebKit
 
-struct WebView: UIViewRepresentable {
+struct NavyismWebView: UIViewRepresentable {
     var url: String
     let webView: WKWebView = WKWebView()
     
     class Coordinator: NSObject, WKNavigationDelegate {
-        var parent: WebView
+        var parent: NavyismWebView
 
-        init(_ parent: WebView) {
+        init(_ parent: NavyismWebView) {
             self.parent = parent
         }
         
@@ -38,7 +38,7 @@ struct WebView: UIViewRepresentable {
         return webView
     }
     
-    func updateUIView(_ webView: WKWebView, context: UIViewRepresentableContext<WebView>) {
+    func updateUIView(_ webView: WKWebView, context: UIViewRepresentableContext<NavyismWebView>) {
         guard let url = URL(string: url) else { return }
         
         webView.load(URLRequest(url: url))

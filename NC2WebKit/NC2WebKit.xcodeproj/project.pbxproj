@@ -8,19 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		DFA5FBB22C1E9EB500E4F489 /* NC2WebKitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBB12C1E9EB500E4F489 /* NC2WebKitApp.swift */; };
-		DFA5FBB42C1E9EB500E4F489 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBB32C1E9EB500E4F489 /* ContentView.swift */; };
+		DFA5FBB42C1E9EB500E4F489 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBB32C1E9EB500E4F489 /* HomeView.swift */; };
 		DFA5FBB62C1E9EB700E4F489 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFA5FBB52C1E9EB700E4F489 /* Assets.xcassets */; };
 		DFA5FBB92C1E9EB700E4F489 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFA5FBB82C1E9EB700E4F489 /* Preview Assets.xcassets */; };
 		DFA5FBC02C1E9EE300E4F489 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBBF2C1E9EE300E4F489 /* WebView.swift */; };
+		DFA5FBC22C1EA90F00E4F489 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBC12C1EA90F00E4F489 /* Enums.swift */; };
+		DFA5FBC62C1ECC6100E4F489 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBC52C1ECC6100E4F489 /* HomeViewModel.swift */; };
+		DFA5FBC92C1ECDE400E4F489 /* PlatformIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBC82C1ECDE400E4F489 /* PlatformIconCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DFA5FBAE2C1E9EB500E4F489 /* NC2WebKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NC2WebKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA5FBB12C1E9EB500E4F489 /* NC2WebKitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NC2WebKitApp.swift; sourceTree = "<group>"; };
-		DFA5FBB32C1E9EB500E4F489 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DFA5FBB32C1E9EB500E4F489 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DFA5FBB52C1E9EB700E4F489 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFA5FBB82C1E9EB700E4F489 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DFA5FBBF2C1E9EE300E4F489 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		DFA5FBC12C1EA90F00E4F489 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		DFA5FBC32C1EB3A000E4F489 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFA5FBC52C1ECC6100E4F489 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		DFA5FBC82C1ECDE400E4F489 /* PlatformIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformIconCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,10 +61,12 @@
 			isa = PBXGroup;
 			children = (
 				DFA5FBB12C1E9EB500E4F489 /* NC2WebKitApp.swift */,
-				DFA5FBB32C1E9EB500E4F489 /* ContentView.swift */,
+				DFA5FBCA2C1ECECD00E4F489 /* WebView */,
+				DFA5FBC42C1ECC5400E4F489 /* Home */,
+				DFA5FBC12C1EA90F00E4F489 /* Enums.swift */,
 				DFA5FBB52C1E9EB700E4F489 /* Assets.xcassets */,
+				DFA5FBC32C1EB3A000E4F489 /* Info.plist */,
 				DFA5FBB72C1E9EB700E4F489 /* Preview Content */,
-				DFA5FBBF2C1E9EE300E4F489 /* WebView.swift */,
 			);
 			path = NC2WebKit;
 			sourceTree = "<group>";
@@ -68,6 +77,32 @@
 				DFA5FBB82C1E9EB700E4F489 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DFA5FBC42C1ECC5400E4F489 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DFA5FBC72C1ECDCB00E4F489 /* PlatformIconCell */,
+				DFA5FBB32C1E9EB500E4F489 /* HomeView.swift */,
+				DFA5FBC52C1ECC6100E4F489 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DFA5FBC72C1ECDCB00E4F489 /* PlatformIconCell */ = {
+			isa = PBXGroup;
+			children = (
+				DFA5FBC82C1ECDE400E4F489 /* PlatformIconCell.swift */,
+			);
+			path = PlatformIconCell;
+			sourceTree = "<group>";
+		};
+		DFA5FBCA2C1ECECD00E4F489 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				DFA5FBBF2C1E9EE300E4F489 /* WebView.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +176,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFA5FBC02C1E9EE300E4F489 /* WebView.swift in Sources */,
-				DFA5FBB42C1E9EB500E4F489 /* ContentView.swift in Sources */,
+				DFA5FBC92C1ECDE400E4F489 /* PlatformIconCell.swift in Sources */,
+				DFA5FBB42C1E9EB500E4F489 /* HomeView.swift in Sources */,
+				DFA5FBC22C1EA90F00E4F489 /* Enums.swift in Sources */,
+				DFA5FBC62C1ECC6100E4F489 /* HomeViewModel.swift in Sources */,
 				DFA5FBB22C1E9EB500E4F489 /* NC2WebKitApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +316,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NC2WebKit/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NC2WebKit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -306,6 +345,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NC2WebKit/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NC2WebKit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
