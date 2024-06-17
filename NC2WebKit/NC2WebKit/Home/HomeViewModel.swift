@@ -13,6 +13,9 @@ final class HomeViewModel {
     var selectedPlatform: Platforms = .interparkTicket
     var sheetHeight: CGFloat = 0.0
     
+    var canGoBack: Bool = false
+    var canGoForward: Bool = false
+    
     func injectScript(webView: NavyismWebView, url: String) {
         let script = """
         document.querySelector('#inputhere').value = '\(url)';
