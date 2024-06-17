@@ -42,8 +42,6 @@ struct PlatformWebView: UIViewRepresentable {
             return WKWebView()
         }
         let refreshControl = UIRefreshControl()
-//        refreshControl.tintColor = .secondaryLabel
-//        refreshControl.transform = CGAffineTransformMakeScale(0.7, 0.7);
         refreshControl.addTarget(webView, action: #selector(WKWebView.webViewPullToRefreshHandler(source:)), for: .valueChanged)
         webView.scrollView.refreshControl = refreshControl
         webView.scrollView.bounces = true
