@@ -17,14 +17,12 @@ struct PlatformView: View {
         VStack {
             HStack {
                 Button {
-                    webView.webView.reload()
-                } label: {
-                    Image(systemName: "arrow.circlepath")
-                }
-                Button {
                     navyismWebView.webView.reload()
                 } label: {
-                    Image(systemName: "clock")
+                    HStack {
+                        Text("서버시간 새로고침")
+                        Image(systemName: "clock")
+                    }
                 }
                 Spacer()
                 Button {
