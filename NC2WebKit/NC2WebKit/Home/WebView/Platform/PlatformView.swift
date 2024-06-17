@@ -20,8 +20,8 @@ struct PlatformView: View {
                     navyismWebView.webView.reload()
                 } label: {
                     HStack {
-                        Text("서버시간 새로고침")
                         Image(systemName: "clock")
+                        Text("새로고침")
                     }
                 }
                 Spacer()
