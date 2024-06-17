@@ -14,7 +14,6 @@
 		DFA5FBC02C1E9EE300E4F489 /* NavyismWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBBF2C1E9EE300E4F489 /* NavyismWebView.swift */; };
 		DFA5FBC22C1EA90F00E4F489 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBC12C1EA90F00E4F489 /* Enums.swift */; };
 		DFA5FBC62C1ECC6100E4F489 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBC52C1ECC6100E4F489 /* HomeViewModel.swift */; };
-		DFA5FBC92C1ECDE400E4F489 /* PlatformIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBC82C1ECDE400E4F489 /* PlatformIconCell.swift */; };
 		DFA5FBCD2C1ED27B00E4F489 /* PlatformWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBCC2C1ED27B00E4F489 /* PlatformWebView.swift */; };
 		DFA5FBCF2C1EDBEB00E4F489 /* PlatformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBCE2C1EDBEB00E4F489 /* PlatformView.swift */; };
 /* End PBXBuildFile section */
@@ -29,7 +28,6 @@
 		DFA5FBC12C1EA90F00E4F489 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		DFA5FBC32C1EB3A000E4F489 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFA5FBC52C1ECC6100E4F489 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		DFA5FBC82C1ECDE400E4F489 /* PlatformIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformIconCell.swift; sourceTree = "<group>"; };
 		DFA5FBCC2C1ED27B00E4F489 /* PlatformWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformWebView.swift; sourceTree = "<group>"; };
 		DFA5FBCE2C1EDBEB00E4F489 /* PlatformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,19 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				DFA5FBCA2C1ECECD00E4F489 /* WebView */,
-				DFA5FBC72C1ECDCB00E4F489 /* PlatformIconCell */,
 				DFA5FBB32C1E9EB500E4F489 /* HomeView.swift */,
 				DFA5FBC52C1ECC6100E4F489 /* HomeViewModel.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		DFA5FBC72C1ECDCB00E4F489 /* PlatformIconCell */ = {
-			isa = PBXGroup;
-			children = (
-				DFA5FBC82C1ECDE400E4F489 /* PlatformIconCell.swift */,
-			);
-			path = PlatformIconCell;
 			sourceTree = "<group>";
 		};
 		DFA5FBCA2C1ECECD00E4F489 /* WebView */ = {
@@ -190,7 +179,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFA5FBC02C1E9EE300E4F489 /* NavyismWebView.swift in Sources */,
-				DFA5FBC92C1ECDE400E4F489 /* PlatformIconCell.swift in Sources */,
 				DFA5FBCD2C1ED27B00E4F489 /* PlatformWebView.swift in Sources */,
 				DFA5FBB42C1E9EB500E4F489 /* HomeView.swift in Sources */,
 				DFA5FBC22C1EA90F00E4F489 /* Enums.swift in Sources */,

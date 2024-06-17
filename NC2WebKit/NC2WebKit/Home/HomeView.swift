@@ -29,34 +29,7 @@ struct HomeView: View {
                 
                 Divider().padding(.top, 20)
                 
-                HStack(spacing: 0) {
-                    Text("플랫폼 선택 ")
-                        .font(.title)
-                        .bold()
-                    Spacer()
-                }.padding(.top, 20)
-                
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(Platforms.allCases, id: \.self) { platform in
-                        Button {
-                            homeVM.setSelectedPlatform(
-                                platform: platform
-                            )
-                            homeVM.injectScript(
-                                webView: navyismWebView,
-                                url: platform.rawValue
-                            )
-                            homeVM.setSheetHeight(
-                                height: geo.size.height - 90
-                            )
-                            homeVM.platformWebViewPresented = true
-                        } label: {
-                            PlatformIconCell(platform: platform, homeVM: homeVM)
-                        }
-                    }
-                }.padding(.top, 20)
-                
-                Spacer()
+                platformList(geo: geo)
                 
             }.padding(.horizontal, 20)
         }
@@ -73,6 +46,58 @@ struct HomeView: View {
     }
 }
 
+extension HomeView {
+    func platformList(geo: GeometryProxy) -> some View {
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                Text("플랫폼 선택 ")
+                    .font(.title)
+                    .bold()
+                Spacer()
+            }.padding(.top, 20)
+            
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(Platforms.allCases, id: \.self) { platform in
+                    platformButton(
+                        geo: geo,
+                        platform: platform
+                    )
+                }
+            }.padding(.top, 20)
+            
+            Spacer()
+        }
+    }
+    
+    func platformButton(geo: GeometryProxy, platform: Platforms) -> some View {
+        Button {
+            homeVM.setSelectedPlatform(
+                platform: platform
+            )
+            homeVM.injectScript(
+                webView: navyismWebView,
+                url: platform.rawValue
+            )
+            homeVM.setSheetHeight(
+                height: geo.size.height - 90
+            )
+            homeVM.platformWebViewPresented = true
+        } label: {
+            VStack(spacing: 0) {
+                Image("\(platform)")
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .shadow(radius: 5)
+                Text(homeVM.convertToKR(eng: "\(platform)"))
+                    .font(.system(size: 14, weight: .bold))
+                    .padding(.top, 10)
+                    .foregroundStyle(.black)
+                Spacer()
+            }
+        }
+    }    
+}
 
 #Preview {
     HomeView()
