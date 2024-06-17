@@ -25,7 +25,7 @@ struct HomeView: View {
             VStack(spacing: 0) {
                 
                 navyismWebView
-                    .frame(height: 90)
+                    .frame(height: 100)
                 
                 Divider().padding(.top, 20)
                 
@@ -41,7 +41,7 @@ struct HomeView: View {
                         Button {
                             homeVM.setSelectedPlatform(platform: platform)
                             homeVM.injectScript(webView: navyismWebView, url: platform.rawValue)
-                            homeVM.setSheetHeight(height: geo.size.height - 100)
+                            homeVM.setSheetHeight(height: geo.size.height - 90)
                             homeVM.platformWebViewPresented = true
                         } label: {
                             PlatformIconCell(platform: platform, homeVM: homeVM)
@@ -54,8 +54,14 @@ struct HomeView: View {
             }.padding(.horizontal, 20)
         }
         .sheet(isPresented: $homeVM.platformWebViewPresented) {
-            PlatformView(url: homeVM.selectedPlatform.rawValue)
-                .presentationDetents([.height(homeVM.sheetHeight)])
+            PlatformView(
+                webView: PlatformWebView(
+                    url: homeVM.selectedPlatform.rawValue,
+                    homeVM: homeVM
+                ),
+                navyismWebView: navyismWebView,
+                homeVM: homeVM
+            ).presentationDetents([.height(homeVM.sheetHeight)])
         }
     }
 }

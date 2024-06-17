@@ -43,7 +43,7 @@ struct NavyismWebView: UIViewRepresentable {
         webView.navigationDelegate = context.coordinator
         webView.load(URLRequest(url: url))
         
-        let hostingController = UIHostingController(rootView: Text("서버시간 불러오는 중 🏃🏃"))
+        let hostingController = UIHostingController(rootView: Text("네이비즘 불러오는 중 🏃🏃"))
         hostingController.view.frame = containerView.bounds
         hostingController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         containerView.addSubview(hostingController.view)

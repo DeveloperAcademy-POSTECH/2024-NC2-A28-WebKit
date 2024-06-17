@@ -18,9 +18,9 @@ struct PlatformIconCell: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .shadow(radius: 5)
             Text(homeVM.convertToKR(eng: "\(platform)"))
+                .font(.system(size: 14, weight: .bold))
                 .padding(.top, 10)
                 .foregroundStyle(.black)
-                .bold()
             Spacer()
         }
     }
