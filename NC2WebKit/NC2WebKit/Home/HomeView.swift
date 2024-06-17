@@ -39,9 +39,16 @@ struct HomeView: View {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(Platforms.allCases, id: \.self) { platform in
                         Button {
-                            homeVM.setSelectedPlatform(platform: platform)
-                            homeVM.injectScript(webView: navyismWebView, url: platform.rawValue)
-                            homeVM.setSheetHeight(height: geo.size.height - 90)
+                            homeVM.setSelectedPlatform(
+                                platform: platform
+                            )
+                            homeVM.injectScript(
+                                webView: navyismWebView,
+                                url: platform.rawValue
+                            )
+                            homeVM.setSheetHeight(
+                                height: geo.size.height - 90
+                            )
                             homeVM.platformWebViewPresented = true
                         } label: {
                             PlatformIconCell(platform: platform, homeVM: homeVM)

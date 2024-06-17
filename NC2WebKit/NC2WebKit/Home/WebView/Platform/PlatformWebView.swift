@@ -41,6 +41,12 @@ struct PlatformWebView: UIViewRepresentable {
         guard let url = URL(string: url) else {
             return WKWebView()
         }
+        let refreshControl = UIRefreshControl()
+//        refreshControl.tintColor = .secondaryLabel
+//        refreshControl.transform = CGAffineTransformMakeScale(0.7, 0.7);
+        refreshControl.addTarget(webView, action: #selector(WKWebView.webViewPullToRefreshHandler(source:)), for: .valueChanged)
+        webView.scrollView.refreshControl = refreshControl
+        webView.scrollView.bounces = true
         webView.navigationDelegate = context.coordinator
         webView.load(URLRequest(url: url))
         
@@ -53,4 +59,13 @@ struct PlatformWebView: UIViewRepresentable {
         webView.load(URLRequest(url: url))
     }
     
+}
+
+extension WKWebView {
+    @objc func webViewPullToRefreshHandler(source: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.reload()
+            source.endRefreshing()
+        }
+    }
 }
