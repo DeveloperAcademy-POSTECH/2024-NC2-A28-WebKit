@@ -11,7 +11,7 @@ struct PlatformView: View {
     let webView: PlatformWebView
     let navyismWebView: NavyismWebView
     
-    var homeVM: HomeViewModel
+    @Bindable var homeVM: HomeViewModel
     
     var body: some View {
         VStack {
@@ -21,13 +21,14 @@ struct PlatformView: View {
         }
     }
     
-    
 }
 
 extension PlatformView {
     var platformViewTopBar: some View {
         HStack {
             navyismReloadButton
+            
+            snapshotButton
             
             Spacer()
             
@@ -42,12 +43,23 @@ extension PlatformView {
     
     var navyismReloadButton: some View {
         Button {
-            navyismWebView.webView.reload()
+            navyismWebView.webView.reload()gi
         } label: {
-            HStack {
-                Image(systemName: "clock")
-                Text("새로고침")
+            Image(systemName: "clock")
+        }.padding(.trailing, 5)
+    }
+    
+    var snapshotButton: some View {
+        Button {
+            webView.takeAndStoreSnapshot { successed in
+                if successed {
+                    homeVM.snapshotStored = true
+                }
             }
+        } label: {
+            Image(systemName: "camera")
+        }.alert("스크린샷 저장 완료", isPresented: $homeVM.snapshotStored) {
+            Button("확인") {}
         }
     }
     

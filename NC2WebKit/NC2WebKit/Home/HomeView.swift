@@ -88,6 +88,11 @@ extension HomeView {
                         .resizable()
                         .frame(width: 24, height: 24)
                 }
+                .alert("플랫폼 추가", isPresented: $homeVM.showAlert) {
+                    alertContent
+                } message: {
+                    Text("URL과 플랫폼 이름을 입력하세요.")
+                }
             }.padding(.vertical, 20)
             
             ScrollView {
@@ -101,11 +106,6 @@ extension HomeView {
                     additionalPlatformList(geo: geo)
                 }.padding(.horizontal, 20)
             }.padding(.horizontal, -20)
-            
-        }.alert("플랫폼 추가", isPresented: $homeVM.showAlert) {
-            alertContent
-        } message: {
-            Text("URL과 플랫폼 이름을 입력하세요.")
         }
     }
     
