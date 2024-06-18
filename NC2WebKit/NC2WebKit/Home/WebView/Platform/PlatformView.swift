@@ -43,7 +43,7 @@ extension PlatformView {
     
     var navyismReloadButton: some View {
         Button {
-            navyismWebView.webView.reload()gi
+            navyismWebView.webView.reload()
         } label: {
             Image(systemName: "clock")
         }.padding(.trailing, 5)
