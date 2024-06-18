@@ -20,6 +20,7 @@ final class HomeViewModel {
     var canGoForward: Bool = false
     
     var showAlert: Bool = false
+    var snapshotStored: Bool = false
     
     var newItemURLInput: String = ""
     var newItemNameInput: String = ""
