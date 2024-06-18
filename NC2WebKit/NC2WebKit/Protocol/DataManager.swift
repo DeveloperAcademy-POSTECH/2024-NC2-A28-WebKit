@@ -11,5 +11,4 @@ protocol DataManager {
     func createItem(urlString: String, displayName: String)
     func fetchItems() -> [AdditionalPlatform]
     func deleteItem(item: AdditionalPlatform)
-    func updateItem(item: AdditionalPlatform, urlString: String, displayName: String)
 }

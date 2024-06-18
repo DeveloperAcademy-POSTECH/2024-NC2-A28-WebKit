@@ -52,14 +52,4 @@ final class SwiftDataManager: DataManager {
             fatalError(error.localizedDescription)
         }
     }
-    
-    func updateItem(item: AdditionalPlatform, urlString: String, displayName: String) {
-        item.urlString = urlString
-        item.displayName = displayName
-        do {
-            try modelContext.save()
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
 }

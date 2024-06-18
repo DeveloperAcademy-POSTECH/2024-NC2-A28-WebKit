@@ -66,8 +66,10 @@ final class HomeViewModel {
 
 // MARK: - CRUD
 extension HomeViewModel {
-    func createItem(urlString: String, displayName: String) {
-        dataManager.createItem(urlString: urlString, displayName: displayName)
+    func createItem() {
+        dataManager.createItem(urlString: newItemURLInput, displayName: newItemNameInput)
+        newItemURLInput = ""
+        newItemNameInput = ""
     }
     
     func fetchItems() {
@@ -76,9 +78,5 @@ extension HomeViewModel {
     
     func deleteItem(item: AdditionalPlatform) {
         dataManager.deleteItem(item: item)
-    }
-    
-    func updateItem(item: AdditionalPlatform, urlString: String, displayName: String) {
-        dataManager.updateItem(item: item, urlString: urlString, displayName: displayName)
     }
 }
