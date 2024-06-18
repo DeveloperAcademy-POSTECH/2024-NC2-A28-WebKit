@@ -58,7 +58,7 @@ extension PlatformView {
             }
         } label: {
             Image(systemName: "camera")
-        }.alert("스크린샷 저장 완료", isPresented: $homeVM.snapshotStored) {
+        }.alert("스크린샷이 저장되었습니다.", isPresented: $homeVM.snapshotStored) {
             Button("확인") {}
         }
     }
