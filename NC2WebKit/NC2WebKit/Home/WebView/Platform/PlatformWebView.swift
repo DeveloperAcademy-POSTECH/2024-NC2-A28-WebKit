@@ -64,21 +64,17 @@ extension PlatformWebView {
     func takeAndStoreSnapshot(completion: @escaping (Bool) -> Void) {
         let config = WKSnapshotConfiguration()
         webView.takeSnapshot(with: config) { image, error in
-            print("take")
             guard let image = image, error == nil else {
                 print("Snapshot error: \(String(describing: error))")
                 completion(false)
                 return
             }
-            print("1")
             PHPhotoLibrary.requestAuthorization { status in
                 if status == .authorized {
-                    print("2")
                     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                     completion(true)
                 }
                 else {
-                    print("3")
                     completion(false)
                 }
             }
