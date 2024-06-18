@@ -60,6 +60,7 @@ extension HomeView {
                     homeVM.fetchItems()
                 }
             }
+            // MARK: - SwiftUI Alert 버그(추후 픽스시 주석 제거)
 //            .disabled(homeVM.newItemURLInput.isEmpty || homeVM.newItemNameInput.isEmpty)
             Button("취소", role: .cancel) {}
         }
