@@ -9,7 +9,9 @@ import SwiftUI
 import WebKit
 
 struct HomeView: View {
-    @State var homeVM: HomeViewModel = HomeViewModel()
+    @State var homeVM: HomeViewModel =
+    HomeViewModel(dataManager: SwiftDataManager())
+    @Environment(\.dismiss) var dismiss
     
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 20),
@@ -23,20 +25,22 @@ struct HomeView: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                
                 navyismWebView
                     .frame(height: 100)
                 
                 Divider().padding(.top, 20)
                 
                 platformList(geo: geo)
-                
             }.padding(.horizontal, 20)
+        }
+        .onAppear() {
+            homeVM.fetchItems()
+            print(homeVM.additionalPlatforms)
         }
         .sheet(isPresented: $homeVM.platformWebViewPresented) {
             PlatformView(
                 webView: PlatformWebView(
-                    url: homeVM.selectedPlatform.rawValue,
+                    url: homeVM.selectedPlatformURL,
                     homeVM: homeVM
                 ),
                 navyismWebView: navyismWebView,
@@ -47,6 +51,27 @@ struct HomeView: View {
 }
 
 extension HomeView {
+    var alertContent: some View {
+        VStack {
+            TextField("URL", text: $homeVM.newItemURLInput)
+            TextField("이름", text: $homeVM.newItemNameInput)
+            Button("추가") {
+                homeVM.createItem(urlString: homeVM.newItemURLInput, displayName: homeVM.newItemNameInput)
+                homeVM.fetchItems()
+            }.disabled(homeVM.newItemURLInput.isEmpty || homeVM.newItemNameInput.isEmpty)
+            Button("취소", role: .cancel) {}
+        }
+    }
+    
+    func additionalPlatformList(geo: GeometryProxy) -> some View {
+        ForEach(homeVM.additionalPlatforms, id: \.self) { platform in
+            additionalPlatformButton(
+                geo: geo,
+                platform: platform
+            )
+        }
+    }
+    
     func platformList(geo: GeometryProxy) -> some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -54,25 +79,38 @@ extension HomeView {
                     .font(.title)
                     .bold()
                 Spacer()
-            }.padding(.top, 20)
-            
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(Platforms.allCases, id: \.self) { platform in
-                    platformButton(
-                        geo: geo,
-                        platform: platform
-                    )
+                Button {
+                    homeVM.showAlert = true
+                } label: {
+                    Image(systemName: "plus.app")
+                        .resizable()
+                        .frame(width: 24, height: 24)
                 }
-            }.padding(.top, 20)
+            }.padding(.vertical, 20)
             
-            Spacer()
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(Platforms.allCases, id: \.self) { platform in
+                        platformButton(
+                            geo: geo,
+                            platform: platform
+                        )
+                    }
+                    additionalPlatformList(geo: geo)
+                }.padding(.horizontal, 20)
+            }.padding(.horizontal, -20)
+            
+        }.alert("플랫폼 추가", isPresented: $homeVM.showAlert) {
+            alertContent
+        } message: {
+            Text("URL과 플랫폼 이름을 입력하세요.")
         }
     }
     
     func platformButton(geo: GeometryProxy, platform: Platforms) -> some View {
         Button {
-            homeVM.setSelectedPlatform(
-                platform: platform
+            homeVM.setSelectedPlatformURL(
+                url: platform.rawValue
             )
             homeVM.injectScript(
                 webView: navyismWebView,
@@ -88,7 +126,12 @@ extension HomeView {
                     .resizable()
                     .scaledToFit()
                     .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .shadow(radius: 5)
+                    .shadow(
+                        color: .black.opacity(0.25),
+                        radius: 4,
+                        x: 0,
+                        y: 4
+                    )
                 Text(homeVM.convertToKR(eng: "\(platform)"))
                     .font(.system(size: 14, weight: .bold))
                     .padding(.top, 10)
@@ -96,7 +139,44 @@ extension HomeView {
                 Spacer()
             }
         }
-    }    
+    }
+    
+    func additionalPlatformButton(geo: GeometryProxy, platform: AdditionalPlatform) -> some View {
+        Button {
+            homeVM.setSelectedPlatformURL(
+                url: platform.urlString
+            )
+            homeVM.injectScript(
+                webView: navyismWebView,
+                url: platform.urlString
+            )
+            homeVM.setSheetHeight(
+                height: geo.size.height - 90
+            )
+            homeVM.platformWebViewPresented = true
+        } label: {
+            VStack(spacing: 0) {
+                Image(systemName: "globe")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(.white)
+                    .padding()
+                    .background(.gray)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .shadow(
+                        color: .black.opacity(0.25),
+                        radius: 4,
+                        x: 0,
+                        y: 4
+                    )
+                Text(platform.displayName)
+                    .font(.system(size: 14, weight: .bold))
+                    .padding(.top, 10)
+                    .foregroundStyle(.black)
+                Spacer()
+            }
+        }
+    }
 }
 
 #Preview {
