@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF5C9F5F2C21212200540E59 /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C9F5E2C21212200540E59 /* SwiftDataManager.swift */; };
+		DF5C9F622C21238200540E59 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C9F612C21238200540E59 /* DataManager.swift */; };
 		DFA5FBB22C1E9EB500E4F489 /* NC2WebKitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBB12C1E9EB500E4F489 /* NC2WebKitApp.swift */; };
 		DFA5FBB42C1E9EB500E4F489 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBB32C1E9EB500E4F489 /* HomeView.swift */; };
 		DFA5FBB62C1E9EB700E4F489 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFA5FBB52C1E9EB700E4F489 /* Assets.xcassets */; };
@@ -16,9 +18,12 @@
 		DFA5FBC62C1ECC6100E4F489 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBC52C1ECC6100E4F489 /* HomeViewModel.swift */; };
 		DFA5FBCD2C1ED27B00E4F489 /* PlatformWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBCC2C1ED27B00E4F489 /* PlatformWebView.swift */; };
 		DFA5FBCF2C1EDBEB00E4F489 /* PlatformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBCE2C1EDBEB00E4F489 /* PlatformView.swift */; };
+		DFA5FBD52C202C2B00E4F489 /* AdditionalPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5FBD42C202C2B00E4F489 /* AdditionalPlatform.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF5C9F5E2C21212200540E59 /* SwiftDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
+		DF5C9F612C21238200540E59 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		DFA5FBAE2C1E9EB500E4F489 /* NC2WebKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NC2WebKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA5FBB12C1E9EB500E4F489 /* NC2WebKitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NC2WebKitApp.swift; sourceTree = "<group>"; };
 		DFA5FBB32C1E9EB500E4F489 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -30,6 +35,7 @@
 		DFA5FBC52C1ECC6100E4F489 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DFA5FBCC2C1ED27B00E4F489 /* PlatformWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformWebView.swift; sourceTree = "<group>"; };
 		DFA5FBCE2C1EDBEB00E4F489 /* PlatformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformView.swift; sourceTree = "<group>"; };
+		DFA5FBD42C202C2B00E4F489 /* AdditionalPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalPlatform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF5C9F5D2C21211200540E59 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DF5C9F5E2C21212200540E59 /* SwiftDataManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DF5C9F602C21237600540E59 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				DF5C9F612C21238200540E59 /* DataManager.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		DFA5FBA52C1E9EB500E4F489 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +84,9 @@
 		DFA5FBB02C1E9EB500E4F489 /* NC2WebKit */ = {
 			isa = PBXGroup;
 			children = (
+				DF5C9F602C21237600540E59 /* Protocol */,
+				DF5C9F5D2C21211200540E59 /* Manager */,
+				DFA5FBD32C202BFF00E4F489 /* Model */,
 				DFA5FBB12C1E9EB500E4F489 /* NC2WebKitApp.swift */,
 				DFA5FBC42C1ECC5400E4F489 /* Home */,
 				DFA5FBC12C1EA90F00E4F489 /* Enums.swift */,
@@ -106,6 +131,14 @@
 				DFA5FBCE2C1EDBEB00E4F489 /* PlatformView.swift */,
 			);
 			path = Platform;
+			sourceTree = "<group>";
+		};
+		DFA5FBD32C202BFF00E4F489 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DFA5FBD42C202C2B00E4F489 /* AdditionalPlatform.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,10 +212,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFA5FBC02C1E9EE300E4F489 /* NavyismWebView.swift in Sources */,
+				DF5C9F622C21238200540E59 /* DataManager.swift in Sources */,
+				DFA5FBD52C202C2B00E4F489 /* AdditionalPlatform.swift in Sources */,
 				DFA5FBCD2C1ED27B00E4F489 /* PlatformWebView.swift in Sources */,
 				DFA5FBB42C1E9EB500E4F489 /* HomeView.swift in Sources */,
 				DFA5FBC22C1EA90F00E4F489 /* Enums.swift in Sources */,
 				DFA5FBCF2C1EDBEB00E4F489 /* PlatformView.swift in Sources */,
+				DF5C9F5F2C21212200540E59 /* SwiftDataManager.swift in Sources */,
 				DFA5FBC62C1ECC6100E4F489 /* HomeViewModel.swift in Sources */,
 				DFA5FBB22C1E9EB500E4F489 /* NC2WebKitApp.swift in Sources */,
 			);
