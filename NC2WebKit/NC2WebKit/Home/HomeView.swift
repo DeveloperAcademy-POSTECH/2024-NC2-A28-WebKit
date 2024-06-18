@@ -35,7 +35,6 @@ struct HomeView: View {
         }
         .onAppear() {
             homeVM.fetchItems()
-            print(homeVM.additionalPlatforms)
         }
         .sheet(isPresented: $homeVM.platformWebViewPresented) {
             PlatformView(
@@ -56,9 +55,12 @@ extension HomeView {
             TextField("URL", text: $homeVM.newItemURLInput)
             TextField("이름", text: $homeVM.newItemNameInput)
             Button("추가") {
-                homeVM.createItem(urlString: homeVM.newItemURLInput, displayName: homeVM.newItemNameInput)
-                homeVM.fetchItems()
-            }.disabled(homeVM.newItemURLInput.isEmpty || homeVM.newItemNameInput.isEmpty)
+                withAnimation {
+                    homeVM.createItem()
+                    homeVM.fetchItems()
+                }
+            }
+//            .disabled(homeVM.newItemURLInput.isEmpty || homeVM.newItemNameInput.isEmpty)
             Button("취소", role: .cancel) {}
         }
     }
@@ -142,20 +144,21 @@ extension HomeView {
     }
     
     func additionalPlatformButton(geo: GeometryProxy, platform: AdditionalPlatform) -> some View {
-        Button {
-            homeVM.setSelectedPlatformURL(
-                url: platform.urlString
-            )
-            homeVM.injectScript(
-                webView: navyismWebView,
-                url: platform.urlString
-            )
-            homeVM.setSheetHeight(
-                height: geo.size.height - 90
-            )
-            homeVM.platformWebViewPresented = true
-        } label: {
-            VStack(spacing: 0) {
+        
+        VStack(spacing: 0) {
+            Button {
+                homeVM.setSelectedPlatformURL(
+                    url: platform.urlString
+                )
+                homeVM.injectScript(
+                    webView: navyismWebView,
+                    url: platform.urlString
+                )
+                homeVM.setSheetHeight(
+                    height: geo.size.height - 90
+                )
+                homeVM.platformWebViewPresented = true
+            } label: {
                 Image(systemName: "globe")
                     .resizable()
                     .scaledToFit()
@@ -169,12 +172,25 @@ extension HomeView {
                         x: 0,
                         y: 4
                     )
-                Text(platform.displayName)
-                    .font(.system(size: 14, weight: .bold))
-                    .padding(.top, 10)
-                    .foregroundStyle(.black)
-                Spacer()
-            }
+                }.contextMenu(
+                ContextMenu(
+                    menuItems: {
+                        Button(role: .destructive) {
+                            withAnimation {
+                                homeVM.deleteItem(item: platform)
+                                homeVM.fetchItems()
+                            }
+                        } label: {
+                            Label("삭제", systemImage: "trash")
+                        }
+                    }
+                )
+            )
+            Text(platform.displayName)
+                .font(.system(size: 14, weight: .bold))
+                .padding(.top, 10)
+                .foregroundStyle(.black)
+            Spacer()
         }
     }
 }
