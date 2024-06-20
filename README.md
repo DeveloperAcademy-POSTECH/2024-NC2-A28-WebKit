@@ -2,7 +2,7 @@
 ## 🎥 Youtube Link
 (추후 만들어진 유튜브 링크 추가)
 
-## 💡 About Augmented Reality
+## 💡 About WebView
 - `WKWebView`를 활용해 HTML/CSS/JavaScript로 이루어진 **웹 콘텐츠를 앱 내에 표시**
 - 프로토콜 `WKUIDelegate`
     - JavaScript **Alert / Confirm 패널 / Text Input 패널** 표시
